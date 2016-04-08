@@ -19,7 +19,7 @@ public class JXAdressView {
 	
 	//private JLabel iconLabel;
 	
-	private JPanel viewPanel;
+	public static JPanel viewPanel;
 	
 	public static Container container;
 	
