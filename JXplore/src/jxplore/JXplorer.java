@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 
 public class JXplorer {
 	
-	public static JXploreFile currentFile;
+	public JXploreFile currentFile;
 	
 	public static void main(String[] args){
 		JXplorer app = new JXplorer();
