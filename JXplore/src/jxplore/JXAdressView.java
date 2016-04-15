@@ -26,9 +26,9 @@ public class JXAdressView {
 	
 	public JXAdressView(){
 		viewPanel = new JPanel();
-		adressLabel = new JLabel("adress");
-		adressTextField = new JTextField("");
-		goButton = new JButton("go");
+		adressLabel = new JLabel("Adress");
+		adressTextField = new JTextField("", 30);
+		goButton = new JButton("Go");
 		viewPanel.add(adressLabel);
 		viewPanel.add(adressTextField);
 		viewPanel.add(goButton);

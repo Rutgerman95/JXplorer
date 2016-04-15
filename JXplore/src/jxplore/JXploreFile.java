@@ -1,7 +1,6 @@
 package jxplore;
 
 import java.io.File;
-import java.util.ArrayList;
 
 import javax.swing.Icon;
 import javax.swing.filechooser.FileSystemView;
@@ -9,10 +8,9 @@ import javax.swing.filechooser.FileSystemView;
 public class JXploreFile {
 
 	private File file;
-	private JXploreFile[] fileCollection;
 	
 	public JXploreFile(){
-		this.file = FileSystemView.getFileSystemView().getRoots()[0];
+		this.file = FileSystemView.getFileSystemView().getHomeDirectory();
 	}
 	
 	public JXploreFile(String name){
@@ -27,9 +25,6 @@ public class JXploreFile {
 		return file;
 	}
 	
-	private void initChilderen() {
-		fileCollection = getAllItems(false);
-	}
 	
 	public String getName(){
 		return FileSystemView.getFileSystemView().getSystemDisplayName(file);
@@ -39,6 +34,7 @@ public class JXploreFile {
 		return file.getAbsolutePath();
 	}
 	
+	
 	public Icon getIcon(){
 		return FileSystemView.getFileSystemView().getSystemIcon(this.file);
 	}
@@ -47,40 +43,57 @@ public class JXploreFile {
 		return !file.isFile();
 	}
 	
-	private JXploreFile[] makeFiles(File[] input) {
-		JXploreFile[] output = new JXploreFile[input.length];
-		for (int index = 0; index < input.length; index++) {
-			output[index] = new JXploreFile(input[index]);
-		}
-		return output;
 	
+	public JXploreFile[] getSubFiles()
+	{
+		JXploreFile[] subFiles;
+		if(file.listFiles() == null)
+		{
+			subFiles = new JXploreFile[0];
+		}
+		else
+		{
+			File[] files = file.listFiles();
+			subFiles = new JXploreFile[files.length];
+			int i = 0;
+			for(File f : files)
+			{
+				subFiles[i] = new JXploreFile(f);
+				i++;
+			}
+		}
+		return subFiles;
 	}
-	private JXploreFile[] getAllItems(boolean needFiles) {
-		if (needFiles == false) {
-			JXploreFile[] childFilesAndFolders = getSubFiles();
-			ArrayList<JXploreFile> dirList = new ArrayList<JXploreFile>();
-			for (JXploreFile iterationFile : childFilesAndFolders) {
-				if (iterationFile.isFolder()) {
-					dirList.add(iterationFile);
+	
+	public JXploreFile[] getSubFolders()
+	{
+		JXploreFile[] subFolders;
+		if(file.listFiles() == null)
+		{
+			subFolders = new JXploreFile[0];
+		}
+		else
+		{
+			File[] files = file.listFiles();
+			int n = 0;
+			for(File f : files)
+			{
+				if(f.isDirectory())
+				{
+					n++;
 				}
 			}
-			return dirList.toArray(new JXploreFile[dirList.size()]);
+			subFolders = new JXploreFile[n];
+			int i = 0;
+			for(File f : files)
+			{
+				if(f.isDirectory())
+				{
+					subFolders[i] = new JXploreFile(f);
+					i++;
+				}
+			}
 		}
-		if (needFiles == true) {
-			return makeFiles(FileSystemView.getFileSystemView().getFiles(file,false));
-		} else {
-			return new JXploreFile[0];
-		}
-	}
-	
-	public JXploreFile[] getSubFiles(){
-		return getAllItems(true);
-	}
-	
-	public JXploreFile[] getSubFolders() {
-		if (fileCollection == null && !file.isFile()) {
-			initChilderen();
-		}
-		return fileCollection;
-	}
+		return subFolders;	
+	}	
 }
