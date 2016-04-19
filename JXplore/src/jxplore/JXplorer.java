@@ -12,6 +12,7 @@ public class JXplorer {
 	public JXploreFile currentFile;
 	public JPanel contentPanel;
 	public JSplitPane splitPane;
+	public JFrame frame;
 	
 	public static void main(String[] args){
 		JXplorer app = new JXplorer();
@@ -72,7 +73,13 @@ public class JXplorer {
 				System.out.println(folders);
 			}
 		}
-	private void buildGUI(){
+	
+	public void buildGUI(){
+		frame = new JFrame();
+		updateGUI();
+	}
+	
+	public void updateGUI(){
 		contentPanel = new JPanel();
 		contentPanel.setLayout(new BorderLayout());
 		
@@ -94,7 +101,6 @@ public class JXplorer {
 		//GroupLayout layout = new GroupLayout(JXAdressView.container);
 		//JXAdressView.container.setLayout(layout);
 		
-		JFrame frame = new JFrame();
 		frame.setContentPane(contentPanel);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.pack();

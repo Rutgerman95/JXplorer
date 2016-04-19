@@ -1,13 +1,15 @@
 package jxplore;
 
 import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class JXAdressView {
+public class JXAdressView implements ActionListener {
 	
 	private JLabel adressLabel;
 	
@@ -29,6 +31,7 @@ public class JXAdressView {
 		adressLabel = new JLabel("Adress");
 		adressTextField = new JTextField("", 30);
 		goButton = new JButton("Go");
+		goButton.addActionListener(this);
 		viewPanel.add(adressLabel);
 		viewPanel.add(adressTextField);
 		viewPanel.add(goButton);
@@ -46,7 +49,10 @@ public class JXAdressView {
 		this.data = data;
 	}
 	
-	//public void actionPerformed(ActionEvent){
-		//new action;
-	//}
+	public void actionPerformed(ActionEvent c)	{
+		String t = adressTextField.getText();
+		JXploreFile file = new JXploreFile(t);
+		data.setCurrentFile(file);
+		data.updateGUI();
+	}
 }
