@@ -17,23 +17,21 @@ public class JXAdressView extends JPanel implements ActionListener {
 	private JXplorer data;
 	//private JLabel iconLabel;
 	
-	public static JPanel viewPanel;
 	public static Container container;
 	public JTextField adressTextField;
 	
 	public JXAdressView(){
-		viewPanel = new JPanel();
 		adressLabel = new JLabel("Adress");
 		adressTextField = new JTextField("", 30);
 		goButton = new JButton("Go");
 		goButton.addActionListener(this);
-		viewPanel.add(adressLabel);
-		viewPanel.add(adressTextField);
-		viewPanel.add(goButton);
+		this.add(adressLabel);
+		this.add(adressTextField);
+		this.add(goButton);
 	}
 	
 	public JPanel getViewPanel(){
-		return viewPanel;
+		return this;
 	}
 	
 	public JXplorer getData() {

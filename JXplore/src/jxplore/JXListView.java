@@ -1,6 +1,8 @@
 package jxplore;
 
 import java.awt.Component;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JLabel;
@@ -8,27 +10,25 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-public class JXListView extends JPanel {
+public class JXListView extends JPanel implements MouseListener {
 	
 	private static final long serialVersionUID = 0;
 	private JList<JXploreFile> fileList;
 	private JXplorer data;
-	private JPanel viewPanel;
 	private JXListCellRenderer listRenderer;
 	private JScrollPane scrollPane;
 	
 	
 	public JXListView(){
-		viewPanel = new JPanel();
 		fileList = new JList<JXploreFile>();
 		listRenderer = new JXListCellRenderer();
 		scrollPane = new JScrollPane(fileList);
-		viewPanel.add(scrollPane);
+		this.add(scrollPane);
 		
 	}
 	
 	public JPanel getViewPanel(){
-		return viewPanel;
+		return this;
 	}
 	
 	public JXplorer getData()
@@ -44,6 +44,41 @@ public class JXListView extends JPanel {
 	public void createList() {
 		fileList.setListData(data.getCurrentFile().getSubFiles());
 		fileList.setCellRenderer(listRenderer);
+		fileList.addMouseListener(this);
+		
+	}
+	
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		if (e.getClickCount() == 2)	
+		{
+			data.setCurrentFile(fileList.getSelectedValue());
+			data.updateGUI();
+		}
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	public class JXListCellRenderer extends DefaultListCellRenderer {

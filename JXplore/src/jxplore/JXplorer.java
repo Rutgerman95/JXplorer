@@ -35,10 +35,6 @@ public class JXplorer {
 		this.currentFile = newFile;
 	}
 	
-	public void printName(JXploreFile currentFile){
-		System.out.println(currentFile);
-	}
-		
 	public void printSubFiles(JXploreFile currentSubFile){
 		JXploreFile[] subFiles = currentFile.getSubFiles();
 		if (subFiles.length == 0)
@@ -106,4 +102,5 @@ public class JXplorer {
 		frame.pack();
 		frame.setVisible(true);
 	}
+
 }	
