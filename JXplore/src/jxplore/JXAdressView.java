@@ -9,22 +9,17 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class JXAdressView implements ActionListener {
+public class JXAdressView extends JPanel implements ActionListener {
 	
-	private JLabel adressLabel;
-	
-	public JTextField adressTextField;
-	
+	private static final long serialVersionUID = 0;	
+	private JLabel adressLabel;	
 	private JButton goButton;
-	
 	private JXplorer data;
-	
 	//private JLabel iconLabel;
 	
 	public static JPanel viewPanel;
-	
 	public static Container container;
-	
+	public JTextField adressTextField;
 	
 	public JXAdressView(){
 		viewPanel = new JPanel();

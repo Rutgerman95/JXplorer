@@ -8,8 +8,9 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-public class JXListView {
+public class JXListView extends JPanel {
 	
+	private static final long serialVersionUID = 0;
 	private JList<JXploreFile> fileList;
 	private JXplorer data;
 	private JPanel viewPanel;

@@ -94,7 +94,7 @@ public class JXplorer {
 		JPanel l =listView.getViewPanel();
 		
 		contentPanel.add(a, BorderLayout.NORTH);
-		contentPanel.add(new JLabel("JXStatus"), BorderLayout.SOUTH);
+		contentPanel.add(new JLabel("JXStatusView"), BorderLayout.SOUTH);
 		splitPane = new JSplitPane(1, new JLabel("JXTreeView"), l);
 		contentPanel.add(splitPane, BorderLayout.CENTER);
 		
