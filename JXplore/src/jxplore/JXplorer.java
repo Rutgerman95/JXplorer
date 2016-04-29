@@ -82,16 +82,14 @@ public class JXplorer {
 		
 		JXAdressView adressView = new JXAdressView();
 		adressView.setData(this);
-		JPanel a = adressView.getViewPanel();
 		
 		JXListView listView = new JXListView();
 		listView.setData(this);
 		listView.createList();
-		JPanel l =listView.getViewPanel();
 		
-		contentPanel.add(a, BorderLayout.NORTH);
+		contentPanel.add(adressView, BorderLayout.NORTH);
 		contentPanel.add(new JLabel("JXStatusView"), BorderLayout.SOUTH);
-		splitPane = new JSplitPane(1, new JLabel("JXTreeView"), l);
+		splitPane = new JSplitPane(1, new JLabel("JXTreeView"), listView);
 		contentPanel.add(splitPane, BorderLayout.CENTER);
 		
 		//GroupLayout layout = new GroupLayout(JXAdressView.container);
