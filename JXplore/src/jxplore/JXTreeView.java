@@ -25,6 +25,14 @@ public class JXTreeView extends JPanel {
 		this.add(scrollPane);
 		
 	}
+	
+	public JXplorer getData() {
+		return  data;
+	}
+	
+	public void setData(JXplorer data){
+		this.data = data;
+	}
 
 	public class JXTreeCellRenderer implements TreeCellRenderer {
 
