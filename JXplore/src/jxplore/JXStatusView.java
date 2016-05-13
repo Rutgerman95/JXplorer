@@ -10,7 +10,7 @@ public class JXStatusView extends JPanel {
 	private JLabel statusLabel;
 	
 	public JXStatusView(){
-		statusLabel = new JLabel("Status");
+		statusLabel = new JLabel("Aayyy Lmao");
 		this.add(statusLabel);
 	}
 

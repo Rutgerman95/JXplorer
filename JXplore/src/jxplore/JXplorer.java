@@ -88,6 +88,7 @@ public class JXplorer {
 		
 		JXTreeView treeView = new JXTreeView();
 		treeView.setData(this);
+		treeView.createTree();
 		
 		JXStatusView statusView = new JXStatusView();
 		statusView.setData(this);

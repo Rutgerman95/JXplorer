@@ -1,61 +1,102 @@
 package jxplore;
 
-import java.awt.Component;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
-import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTree;
-import javax.swing.event.TreeSelectionListener;
-import javax.swing.tree.TreeCellRenderer;
+import javax.swing.tree.DefaultTreeCellRenderer;
 
-public class JXTreeView extends JPanel {
+public class JXTreeView extends JPanel implements MouseListener{
 	
 	private static final long serialVersionUID = 0;
-	private JList<JXploreFile> fileList;
+	private JTree fileTree;
 	private JXplorer data;
-	private JTree tree;
-	private TreeSelectionListener tsl;
-	private JXTreeCellRenderer treeRenderer;
 	private JScrollPane scrollPane;
+	private JXTreeRenderer treeRenderer;
 	
 	public JXTreeView(){
-		fileList = new JList<JXploreFile>();
-		tree = new JTree();
-		treeRenderer = new JXTreeCellRenderer();
-		scrollPane = new JScrollPane(fileList);
-		this.add(scrollPane);
 		
+	}
+	
+	public JXplorer getData()
+	{
+		return data;
+	}
+	
+	public void setData(JXplorer data)
+	{
+		this.data = data;
+	}
+	
+	public void createTree() {
+		JXploreFile root = new JXploreFile();
+		fileTree = new JTree(root);
+		treeRenderer = new JXTreeRenderer();
+		scrollPane = new JScrollPane(fileTree);
+		this.add(scrollPane);
+		fileTree.setCellRenderer(treeRenderer);
+		fileTree.addMouseListener(this);
 	}
 	
 	public JPanel getViewPanel(){
 		return this;
 	}
 	
-	public JXplorer getData() {
-		return  data;
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		if (e.getClickCount() == 2)	
+		{
+			//data.setCurrentFile(fileList.getSelectedValue());
+			data.updateGUI();
+		}
 	}
-	
-	public void setData(JXplorer data){
-		this.data = data;
-	}
-	
-	public void createTree() {
-		//tree.setTreeData(data.getCurrentFile().getSubFiles());
-		tree.setCellRenderer(treeRenderer);
-		tree.addTreeSelectionListener(tsl);
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
 		
 	}
 
-	public class JXTreeCellRenderer implements TreeCellRenderer {
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 
-		private static final long serialVersionUID = 0;
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 
-		@Override
-		public Component getTreeCellRendererComponent(JTree arg0, Object arg1, boolean arg2, boolean arg3, boolean arg4,
-				int arg5, boolean arg6) {
-			// TODO Auto-generated method stub
-			return null;
-		}
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	 public class JXTreeRenderer extends DefaultTreeCellRenderer {
+
+		  private static final long serialVersionUID = 0;
+
+//		  @Override
+//		  public Component getListCellRendererComponent(JList<?> list,
+//		    Object value, int index, boolean isSelected, boolean cellHasFocus) {
+//		   Component result = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+//		   
+//		   JLabel label = (JLabel) result;
+//		   
+//		   if (value instanceof JXploreFile) {
+//		    JXploreFile data = (JXploreFile) value;
+//		    
+//		    label.setText(data.getName());
+//		    label.setIcon(data.getIcon());
+//		 	}
+//		  return label;
+//		 }
+
 	}
 }
