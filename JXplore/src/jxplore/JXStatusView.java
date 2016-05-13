@@ -1,11 +1,22 @@
 package jxplore;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class JXStatusView extends JPanel {
 	
 	private static final long serialVersionUID = 0;
 	private JXplorer data;
+	private JLabel statusLabel;
+	
+	public JXStatusView(){
+		statusLabel = new JLabel("Status");
+		this.add(statusLabel);
+	}
+
+	public JPanel getViewPanel(){
+		return this;
+	}
 	
 	public JXplorer getData() {
 		return  data;

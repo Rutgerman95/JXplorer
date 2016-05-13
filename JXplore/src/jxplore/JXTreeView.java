@@ -6,6 +6,7 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTree;
+import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.TreeCellRenderer;
 
 public class JXTreeView extends JPanel {
@@ -14,6 +15,7 @@ public class JXTreeView extends JPanel {
 	private JList<JXploreFile> fileList;
 	private JXplorer data;
 	private JTree tree;
+	private TreeSelectionListener tsl;
 	private JXTreeCellRenderer treeRenderer;
 	private JScrollPane scrollPane;
 	
@@ -26,6 +28,10 @@ public class JXTreeView extends JPanel {
 		
 	}
 	
+	public JPanel getViewPanel(){
+		return this;
+	}
+	
 	public JXplorer getData() {
 		return  data;
 	}
@@ -33,10 +39,17 @@ public class JXTreeView extends JPanel {
 	public void setData(JXplorer data){
 		this.data = data;
 	}
+	
+	public void createTree() {
+		//tree.setTreeData(data.getCurrentFile().getSubFiles());
+		tree.setCellRenderer(treeRenderer);
+		tree.addTreeSelectionListener(tsl);
+		
+	}
 
 	public class JXTreeCellRenderer implements TreeCellRenderer {
 
-		  private static final long serialVersionUID = 0;
+		private static final long serialVersionUID = 0;
 
 		@Override
 		public Component getTreeCellRendererComponent(JTree arg0, Object arg1, boolean arg2, boolean arg3, boolean arg4,
