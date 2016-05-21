@@ -113,8 +113,8 @@ public class JXploreFile implements TreeNode{
 
 	@Override
 	public TreeNode getChildAt(int arg0) {
-		// TODO Auto-generated method stub
-		return null;
+		TreeNode x = getSubFiles()[arg0];
+		return x;
 	}
 
 	@Override
