@@ -8,9 +8,12 @@ public class JXStatusView extends JPanel {
 	private static final long serialVersionUID = 0;
 	private JXplorer data;
 	private JLabel statusLabel;
+	private int fileCount;
 	
 	public JXStatusView(){
-		statusLabel = new JLabel("Aayyy Lmao");
+		JXploreFile root = new JXploreFile();
+		fileCount = root.getSubFiles().length;
+		statusLabel = new JLabel(fileCount + " Files");
 		this.add(statusLabel);
 	}
 
