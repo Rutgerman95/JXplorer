@@ -2,6 +2,7 @@ package jxplore;
 
 import java.awt.BorderLayout;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
@@ -71,7 +72,8 @@ public class JXplorer {
 	
 	public void buildGUI(){
 		frame = new JFrame();
-		//frame.setIconImage();
+		ImageIcon img = new ImageIcon("E:/Jaar 1/Programmeren2/Folder-icon.png");
+		frame.setIconImage(img.getImage());
 		updateGUI();
 	}
 	
