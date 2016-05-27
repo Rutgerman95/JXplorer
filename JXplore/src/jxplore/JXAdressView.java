@@ -6,15 +6,13 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class JXAdressView extends JPanel implements ActionListener {
+public class JXAdressView extends JXploreView implements ActionListener {
 	
 	private static final long serialVersionUID = 0;	
 	private JLabel adressLabel;	
 	private JButton goButton;
-	private JXplorer data;
 	//private JLabel iconLabel;
 	
 	public static Container container;
@@ -28,18 +26,6 @@ public class JXAdressView extends JPanel implements ActionListener {
 		this.add(adressLabel);
 		this.add(adressTextField);
 		this.add(goButton);
-	}
-	
-	public JPanel getViewPanel(){
-		return this;
-	}
-	
-	public JXplorer getData() {
-		return  data;
-	}
-	
-	public void setData(JXplorer data){
-		this.data = data;
 	}
 	
 	public void actionPerformed(ActionEvent c)	{

@@ -7,14 +7,12 @@ import java.awt.event.MouseListener;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JLabel;
 import javax.swing.JList;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-public class JXListView extends JPanel implements MouseListener {
+public class JXListView extends JXploreView implements MouseListener {
 	
 	private static final long serialVersionUID = 0;
 	private JList<JXploreFile> fileList;
-	private JXplorer data;
 	private JXListCellRenderer listRenderer;
 	private JScrollPane scrollPane;
 	
@@ -25,20 +23,6 @@ public class JXListView extends JPanel implements MouseListener {
 		scrollPane = new JScrollPane(fileList);
 		this.add(scrollPane);
 		
-	}
-	
-	public JPanel getViewPanel(){
-		return this;
-	}
-	
-	public JXplorer getData()
-	{
-		return data;
-	}
-	
-	public void setData(JXplorer data)
-	{
-		this.data = data;
 	}
 	
 	public void createList() {
