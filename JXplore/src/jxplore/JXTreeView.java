@@ -1,11 +1,13 @@
 package jxplore;
 
+import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultTreeCellRenderer;
+import javax.swing.tree.TreeNode;
 
 public class JXTreeView extends JXploreView implements MouseListener{
 	
@@ -61,25 +63,22 @@ public class JXTreeView extends JXploreView implements MouseListener{
 		
 	}
 	
-	 public class JXTreeRenderer extends DefaultTreeCellRenderer {
+	public class JXTreeRenderer extends DefaultTreeCellRenderer {
 
-		  private static final long serialVersionUID = 0;
-
+		  private static final long serialVersionUID = 1L;
+		  
 		  @Override
-		  public Component getListCellRendererComponent(JList<?> list,
-		    Object value, int index, boolean isSelected, boolean cellHasFocus) {
-		   Component result = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-		   
-		   JLabel label = (JLabel) result;
-		   
-		   if (value instanceof JXploreFile) {
-		    JXploreFile data = (JXploreFile) value;
-		    
-		    label.setText(data.getName());
-		    label.setIcon(data.getIcon());
-		 	}
-		  return label;
-		 }
+			public Component getTreeCellRendererComponent(JTree tree, Object value,boolean selected, boolean expanded, boolean leaf, int row,boolean hasFocus) {
+				TreeNode entry = (TreeNode) value;
+				JXploreFile file = (JXploreFile) entry;
+				
+			    this.setIcon(file.getIcon());
+				this.setText(file.getName());
+				 
+				return this;
+			}
+
+		 
 
 	}
 }
