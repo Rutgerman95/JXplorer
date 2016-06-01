@@ -4,8 +4,10 @@ import java.awt.BorderLayout;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
+import javax.swing.SwingConstants;
 
 public class JXplorer {
 	
@@ -71,7 +73,7 @@ public class JXplorer {
 		}
 	
 	public void buildGUI(){
-		frame = new JFrame();
+		frame = new JFrame("JXplorer: Explore your files with Java");
 		ImageIcon img = new ImageIcon("E:/Jaar 1/Programmeren2/Folder-icon.png");
 		frame.setIconImage(img.getImage());
 		updateGUI();
