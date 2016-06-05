@@ -74,7 +74,7 @@ public class JXplorer {
 	
 	public void buildGUI(){
 		frame = new JFrame("JXplorer: Explore your files with Java");
-		ImageIcon img = new ImageIcon("E:/Jaar 1/Programmeren2/Folder-icon.png");
+		ImageIcon img = new ImageIcon("src/resource/Folder-icon.png");
 		frame.setIconImage(img.getImage());
 		updateGUI();
 	}
