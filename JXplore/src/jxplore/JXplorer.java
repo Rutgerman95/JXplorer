@@ -4,10 +4,8 @@ import java.awt.BorderLayout;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
-import javax.swing.SwingConstants;
 
 public class JXplorer {
 	
@@ -83,13 +81,13 @@ public class JXplorer {
 		contentPanel = new JPanel();
 		contentPanel.setLayout(new BorderLayout());
 		
-		
-		JXAdressView adressView = new JXAdressView();
-		adressView.setData(this);
-		
 		JXListView listView = new JXListView();
 		listView.setData(this);
 		listView.createList();
+		
+		JXAdressView adressView = new JXAdressView();
+		adressView.setData(this);
+		adressView.updateAdress();
 		
 		JXTreeView treeView = new JXTreeView();
 		treeView.setData(this);
@@ -102,9 +100,6 @@ public class JXplorer {
 		contentPanel.add(statusView, BorderLayout.SOUTH);
 		splitPane = new JSplitPane(1, treeView, listView);
 		contentPanel.add(splitPane, BorderLayout.CENTER);
-		
-		//GroupLayout layout = new GroupLayout(JXAdressView.container);
-		//JXAdressView.container.setLayout(layout);
 		
 		frame.setContentPane(contentPanel);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -13,19 +13,24 @@ public class JXAdressView extends JXploreView implements ActionListener {
 	private static final long serialVersionUID = 0;	
 	private JLabel adressLabel;	
 	private JButton goButton;
-	//private JLabel iconLabel;
 	
 	public static Container container;
 	public JTextField adressTextField;
 	
 	public JXAdressView(){
 		adressLabel = new JLabel("Adress");
-		adressTextField = new JTextField("", 30);
+		JXploreFile xploreFile = new JXploreFile();
+		adressTextField = new JTextField(xploreFile.getPath(), 30);
 		goButton = new JButton("Go");
 		goButton.addActionListener(this);
 		this.add(adressLabel);
 		this.add(adressTextField);
 		this.add(goButton);
+	}
+	
+	public void updateAdress(){
+		JXploreFile xploreFile = new JXploreFile();
+		adressTextField.setText(xploreFile.getPath());
 	}
 	
 	public void actionPerformed(ActionEvent c)	{

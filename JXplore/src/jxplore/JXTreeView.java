@@ -34,7 +34,6 @@ public class JXTreeView extends JXploreView implements MouseListener{
 	public void mouseClicked(MouseEvent e) {
 		if (e.getClickCount() == 2)	
 		{
-			//data.setCurrentFile(fileList.getSelectedValue());
 			data.updateGUI();
 		}
 	}
