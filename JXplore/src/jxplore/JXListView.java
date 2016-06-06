@@ -19,8 +19,8 @@ public class JXListView extends JXploreView implements MouseListener {
 	
 	public JXListView(){
 		fileList = new JList<JXploreFile>();
-		listRenderer = new JXListCellRenderer();
 		scrollPane = new JScrollPane(fileList);
+		listRenderer = new JXListCellRenderer();
 		this.add(scrollPane);
 		
 	}

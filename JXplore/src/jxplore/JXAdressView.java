@@ -19,8 +19,7 @@ public class JXAdressView extends JXploreView implements ActionListener {
 	
 	public JXAdressView(){
 		adressLabel = new JLabel("Adress");
-		JXploreFile xploreFile = new JXploreFile();
-		adressTextField = new JTextField(xploreFile.getPath(), 30);
+		adressTextField = new JTextField("", 30);
 		goButton = new JButton("Go");
 		goButton.addActionListener(this);
 		this.add(adressLabel);
@@ -28,10 +27,6 @@ public class JXAdressView extends JXploreView implements ActionListener {
 		this.add(goButton);
 	}
 	
-	public void updateAdress(){
-		JXploreFile xploreFile = new JXploreFile();
-		adressTextField.setText(xploreFile.getPath());
-	}
 	
 	public void actionPerformed(ActionEvent c)	{
 		String t = adressTextField.getText();

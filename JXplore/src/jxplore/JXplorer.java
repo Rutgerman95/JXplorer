@@ -71,7 +71,8 @@ public class JXplorer {
 		}
 	
 	public void buildGUI(){
-		frame = new JFrame("JXplorer: Explore your files with Java");
+		JXploreFile xploreFile = new JXploreFile();
+		frame = new JFrame(xploreFile.getPath());
 		ImageIcon img = new ImageIcon("src/resource/Folder-icon.png");
 		frame.setIconImage(img.getImage());
 		updateGUI();
@@ -87,7 +88,6 @@ public class JXplorer {
 		
 		JXAdressView adressView = new JXAdressView();
 		adressView.setData(this);
-		adressView.updateAdress();
 		
 		JXTreeView treeView = new JXTreeView();
 		treeView.setData(this);
@@ -95,6 +95,7 @@ public class JXplorer {
 		
 		JXStatusView statusView = new JXStatusView();
 		statusView.setData(this);
+		statusView.getStatus();
 		
 		contentPanel.add(adressView, BorderLayout.NORTH);
 		contentPanel.add(statusView, BorderLayout.SOUTH);
