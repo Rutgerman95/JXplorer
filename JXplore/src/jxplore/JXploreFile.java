@@ -1,6 +1,7 @@
 package jxplore;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Enumeration;
 
 import javax.swing.Icon;
@@ -10,20 +11,25 @@ import javax.swing.tree.TreeNode;
 public class JXploreFile implements TreeNode{
 
 	private File file;
+	private JXploreFile[] foldersCache;
 	
 	public JXploreFile(){
 		this.file = FileSystemView.getFileSystemView().getHomeDirectory();
 	}
 	
+	//Maakt een nieuw bestand aan
 	public JXploreFile(String name){
 		file = new File(name);
 	}
 	
+	//Definieert een nieuw bestand
 	public JXploreFile(File file){
 		this.file = file;
 	}
 	
 	public File getFile(){
+		this.initCache();
+		this.getCache();
 		return file;
 	}
 	
@@ -32,6 +38,7 @@ public class JXploreFile implements TreeNode{
 		return FileSystemView.getFileSystemView().getSystemDisplayName(file);
 	}
 	
+	//Geeft het bestandspad terug
 	public String getPath(){
 		return file.getAbsolutePath();
 	}
@@ -140,4 +147,40 @@ public class JXploreFile implements TreeNode{
 		// TODO Auto-generated method stub
 		return false;
 	}	
+	
+	//Vult de foldersCache array
+	private void initCache(){
+		foldersCache = getAllItems(true);
+	}
+	
+	private JXploreFile[] getCache(){
+		return foldersCache;
+	}
+	
+	//Verzamelt bestandenv voor de initCache() methode
+	private JXploreFile[] getAllItems(boolean filesNeeded) {
+		if (filesNeeded == false) {
+			JXploreFile[] childFilesAndFolders = getSubFiles();
+			ArrayList<JXploreFile> directoryList = new ArrayList<JXploreFile>();
+			for (JXploreFile iterationFile : childFilesAndFolders) {
+				if (iterationFile.isFolder()) {
+					directoryList.add(iterationFile);
+				}
+			}
+			return directoryList.toArray(new JXploreFile[directoryList.size()]);
+		}
+		if (filesNeeded == true) {
+			return makeFiles(FileSystemView.getFileSystemView().getFiles(file, false));
+		} else {
+			return new JXploreFile[0];
+		}
+	}
+	
+	private JXploreFile[] makeFiles(File[] input) {
+		JXploreFile[] output = new JXploreFile[input.length];
+		for (int index = 0; index < input.length; index++) {
+			output[index] = new JXploreFile(input[index]);
+		}
+		return output;
+	}
 }

@@ -17,9 +17,7 @@ public class JXTreeView extends JXploreView implements MouseListener{
 	private JScrollPane scrollPane;
 	private JXTreeRenderer treeRenderer;
 	
-	public JXTreeView(){
-		
-	}
+	public JXTreeView(){}
 	
 	public void createTree() {
 		JXploreFile root = new JXploreFile();
@@ -32,6 +30,7 @@ public class JXTreeView extends JXploreView implements MouseListener{
 		fileTree.addMouseListener(this);
 	}
 	
+	//Dubbelklik om mappen te openen
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		if (e.getClickCount() == 2)	
@@ -64,6 +63,7 @@ public class JXTreeView extends JXploreView implements MouseListener{
 		
 	}
 	
+	//Rendert de treeView
 	public class JXTreeRenderer extends DefaultTreeCellRenderer {
 
 		  private static final long serialVersionUID = 1L;

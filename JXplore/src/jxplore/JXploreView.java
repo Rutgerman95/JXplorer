@@ -2,6 +2,7 @@ package jxplore;
 
 import javax.swing.JPanel;
 
+//Superklasse voor alle view-klassen
 public abstract class JXploreView extends JPanel{
 	
 	private static final long serialVersionUID = 0;

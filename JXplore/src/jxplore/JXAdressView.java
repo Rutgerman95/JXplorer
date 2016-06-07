@@ -27,7 +27,12 @@ public class JXAdressView extends JXploreView implements ActionListener {
 		this.add(goButton);
 	}
 	
+	//Vult het huidige bestandspad in de adresbalk in 
+	public void updateAdress(){
+		adressTextField.setText(data.getCurrentFile().getPath());	
+	}
 	
+	//Zendt het opgegeven pad naar JXplorer als er op GO wordt geklikt
 	public void actionPerformed(ActionEvent c)	{
 		String t = adressTextField.getText();
 		JXploreFile file = new JXploreFile(t);

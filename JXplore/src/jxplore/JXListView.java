@@ -27,6 +27,7 @@ public class JXListView extends JXploreView implements MouseListener {
 		
 	}
 	
+	//Bouwt de lijst op
 	public void createList() {
 		fileList.setListData(data.getCurrentFile().getSubFiles());
 		fileList.setCellRenderer(listRenderer);
@@ -34,6 +35,7 @@ public class JXListView extends JXploreView implements MouseListener {
 		
 	}
 	
+	//Dubbelklik om een map te openen
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		if (e.getClickCount() == 2)	
@@ -67,6 +69,7 @@ public class JXListView extends JXploreView implements MouseListener {
 		
 	}
 	
+	//Rendert de lijst
 	public class JXListCellRenderer extends DefaultListCellRenderer {
 
 		  private static final long serialVersionUID = 0;

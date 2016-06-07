@@ -13,6 +13,7 @@ public class JXStatusView extends JXploreView {
 		this.add(statusLabel);
 	}
 	
+	//Vult de statusbalk en werkt deze bij
 	public void getStatus(){ 
 		text = data.getCurrentFile().getChildCount() + " Files|Location: " + data.getCurrentFile().getName();
 		statusLabel.setText(text);

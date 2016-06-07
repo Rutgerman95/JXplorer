@@ -14,6 +14,7 @@ public class JXplorer {
 	public JSplitPane splitPane;
 	public JFrame frame;
 	
+	//Initialiseert de app
 	public static void main(String[] args){
 		JXplorer app = new JXplorer();
 		app.buildGUI();
@@ -70,6 +71,7 @@ public class JXplorer {
 			}
 		}
 	
+	//Zet de GUI op
 	public void buildGUI(){
 		frame = new JFrame("JXplorer: Browse your files with Java!");
 		ImageIcon img = new ImageIcon("src/resource/Folder-icon.png");
@@ -77,6 +79,7 @@ public class JXplorer {
 		updateGUI();
 	}
 	
+	//Vult de view-klassen in de JFrame in en werkt de GUI bij
 	public void updateGUI(){
 		contentPanel = new JPanel();
 		contentPanel.setLayout(new BorderLayout());
@@ -87,7 +90,7 @@ public class JXplorer {
 		
 		JXAdressView adressView = new JXAdressView();
 		adressView.setData(this);
-		adressView.adressTextField.setText(this.getCurrentFile().getPath());
+		adressView.updateAdress();
 		
 		JXTreeView treeView = new JXTreeView();
 		treeView.setData(this);
