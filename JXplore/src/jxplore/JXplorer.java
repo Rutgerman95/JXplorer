@@ -71,8 +71,8 @@ public class JXplorer {
 		}
 	
 	public void buildGUI(){
-		JXploreFile xploreFile = new JXploreFile();
-		frame = new JFrame(xploreFile.getPath());
+		JXploreFile file = new JXploreFile();
+		frame = new JFrame(file.getFile().getPath());
 		ImageIcon img = new ImageIcon("src/resource/Folder-icon.png");
 		frame.setIconImage(img.getImage());
 		updateGUI();

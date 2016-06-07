@@ -1,5 +1,6 @@
 package jxplore;
 
+import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -21,6 +22,7 @@ public class JXListView extends JXploreView implements MouseListener {
 		fileList = new JList<JXploreFile>();
 		scrollPane = new JScrollPane(fileList);
 		listRenderer = new JXListCellRenderer();
+		this.setLayout(new BorderLayout());
 		this.add(scrollPane);
 		
 	}

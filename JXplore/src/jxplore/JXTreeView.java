@@ -1,5 +1,6 @@
 package jxplore;
 
+import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -25,6 +26,7 @@ public class JXTreeView extends JXploreView implements MouseListener{
 		fileTree = new JTree(root);
 		treeRenderer = new JXTreeRenderer();
 		scrollPane = new JScrollPane(fileTree);
+		this.setLayout(new BorderLayout());
 		this.add(scrollPane);
 		fileTree.setCellRenderer(treeRenderer);
 		fileTree.addMouseListener(this);
