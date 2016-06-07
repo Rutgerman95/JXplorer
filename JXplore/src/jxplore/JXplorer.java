@@ -71,8 +71,7 @@ public class JXplorer {
 		}
 	
 	public void buildGUI(){
-		JXploreFile file = new JXploreFile();
-		frame = new JFrame(file.getFile().getPath());
+		frame = new JFrame("JXplorer: Browse your files with Java!");
 		ImageIcon img = new ImageIcon("src/resource/Folder-icon.png");
 		frame.setIconImage(img.getImage());
 		updateGUI();
@@ -88,6 +87,7 @@ public class JXplorer {
 		
 		JXAdressView adressView = new JXAdressView();
 		adressView.setData(this);
+		adressView.adressTextField.setText(this.getCurrentFile().getPath());
 		
 		JXTreeView treeView = new JXTreeView();
 		treeView.setData(this);
